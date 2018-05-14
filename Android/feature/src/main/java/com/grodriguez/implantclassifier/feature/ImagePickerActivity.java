@@ -157,9 +157,15 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
             startCameraActivity();
         }
         else if (v.getId() == R.id.sendButton) {
+
             if(imagebitmap!=null) {
                 makeToast("Sent");
                 sendImage();
+                /*
+                Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
+                intent.putExtra("BitmapImage", imagebitmap);
+                startActivity(intent);
+                */
             }
             else
                 makeToast("Please select an image");

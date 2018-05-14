@@ -24,6 +24,10 @@
         </activity>
         <activity android:name=".ImagePickerActivity"
             android:screenOrientation="portrait"/>
+         <activity android:name=".ImageViewerActivity"
+        android:screenOrientation="portrait"/>
+            <activity android:name=".ImplantDetailActivity"
+    android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/imageViewMedium"
+            android:layout_width="200dp"
+            android:layout_height="300dp"
+            app:srcCompat="@android:color/black" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/result1Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="result1 x%" />
+
+            <TextView
+                android:id="@+id/result2Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="result2 x%" />
+
+            <TextView
+                android:id="@+id/result3Text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="result3 x%" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/implantImageSmall"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:color/black" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/implantName"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="title" />
+
+                    <TextView
+                        android:id="@+id/implantDetails"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:text="detail" />
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/implantWebBtn"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@android:drawable/ic_menu_info_details" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
