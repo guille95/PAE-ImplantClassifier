@@ -28,7 +28,6 @@ import java.io.File;
 import java.net.URI;
 import java.util.List;
 
-android.content.ActivityNotFoundException: Unable to find explicit activity class {com.grodriguez.implantclassifier.app/com.grodriguez.implantclassifier.feature.ImagePickerActivity}; have you declared this activity in your AndroidManifest.xml?
 
 
 public class MainActivity extends AppCompatActivity  implements View.OnClickListener {

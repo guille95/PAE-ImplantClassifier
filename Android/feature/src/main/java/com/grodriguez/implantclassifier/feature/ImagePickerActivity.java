@@ -1,6 +1,7 @@
 package com.grodriguez.implantclassifier.feature;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -25,7 +26,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.util.List;
 
-public class ImagePickerActivity extends AppCompatActivity implements View.OnClickListener {
+public class ImagePickerActivity extends Activity implements View.OnClickListener {
 
     private Uri imageCaptureURI;
     private ImageView imageView;
