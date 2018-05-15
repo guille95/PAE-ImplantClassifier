@@ -23,6 +23,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.util.List;
 
@@ -160,12 +161,24 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
 
             if(imagebitmap!=null) {
                 makeToast("Sent");
-                sendImage();
-                /*
+                //sendImage();
+
+               // esto peta, el bitmap es grande y no deja enviarlo via putExtra, mirar como hacerlo...
+                //Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
+               // intent.putExtra("BitmapImage", imagebitmap);
+               // startActivity(intent);
+                imagebitmap=getResizedBitmap(imagebitmap,480,270);
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+
+               // Intent in1 = new Intent(this, Activity2.class);
+               // in1.putExtra("image",byteArray);
                 Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
-                intent.putExtra("BitmapImage", imagebitmap);
+                intent.putExtra("image",byteArray);
                 startActivity(intent);
-                */
+
             }
             else
                 makeToast("Please select an image");

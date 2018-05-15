@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
@@ -13,6 +14,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -20,8 +22,8 @@ import java.util.List;
 
 public class ImageViewerActivity extends Activity implements View.OnClickListener {
 
-    private  Button cancel;
-    private Button search;
+    private ImageButton cancel;
+    private ImageButton search;
     private Uri imageCaptureURI;
     private ImageView imageView;
     Boolean permis = false;
@@ -41,11 +43,11 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_viewer_layout);
-        cancel = (Button) findViewById(R.id.returnBtn);
+        cancel = (ImageButton) findViewById(R.id.returnBtn);
         cancel.setOnClickListener(this);
-        search = (Button) findViewById(R.id.searchBtn);
+        search = (ImageButton) findViewById(R.id.searchBtn);
         search.setOnClickListener(this);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.imageViewBig);
         int MyVersion = Build.VERSION.SDK_INT;
         if (MyVersion > Build.VERSION_CODES.LOLLIPOP_MR1) {
             if (!checkIfAlreadyhavePermission()) {
@@ -64,8 +66,12 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
                         OUTPUT_NAME);
 
 
-        Intent intent = getIntent();
-        imagebitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
+       // Intent intent = getIntent();
+       // imagebitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
+
+
+        byte[] byteArray = getIntent().getByteArrayExtra("image");
+        imagebitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         imageView.setImageBitmap(imagebitmap);
 
     }
@@ -86,7 +92,13 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
         if (v.getId() == R.id.searchBtn) {
             if(imagebitmap!=null) {
                 makeToast("Sent");
-                sendImage();
+                List<Classifier.Recognition> result = sendImage();
+                Integer i = result.size();
+                makeToast(i.toString());
+                Intent intent = new Intent(ImageViewerActivity.this, ImplantDetailActivity.class);
+                intent.putExtra("result1",result.get(0).getTitle());
+                intent.putExtra("result1int",result.get(0).getConfidence());
+                startActivity(intent);
             }
             else
                 makeToast("Please select an image");
@@ -103,7 +115,7 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
         toast1.show();
     }
 
-    private void sendImage() {
+    private List<Classifier.Recognition> sendImage() {
 
         //final List<Classifier.Recognition> results = classifier.recognizeImage(imagebitmap);
 
@@ -119,6 +131,7 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
 
         makeToast(results.toString());
 
+        return results;
 
     }
 
