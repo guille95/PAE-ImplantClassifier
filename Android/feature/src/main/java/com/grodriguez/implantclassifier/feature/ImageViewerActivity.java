@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 public class ImageViewerActivity extends Activity implements View.OnClickListener {
@@ -96,6 +97,27 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
                 Integer i = result.size();
                 makeToast(i.toString());
                 Intent intent = new Intent(ImageViewerActivity.this, ImplantDetailActivity.class);
+
+
+                imagebitmap=getResizedBitmap(imagebitmap,480,270);
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+                byte[] byteArray = stream.toByteArray();
+                intent.putExtra("image",byteArray);
+
+                if(result.size() >= 2){
+                    intent.putExtra("result2",result.get(1).getTitle());
+                    intent.putExtra("result2int",result.get(1).getConfidence());
+                }
+                if(result.size() >= 3){
+                    intent.putExtra("result3",result.get(2).getTitle());
+                    intent.putExtra("result3int",result.get(2).getConfidence());
+                }
+
+
+
+
                 intent.putExtra("result1",result.get(0).getTitle());
                 intent.putExtra("result1int",result.get(0).getConfidence());
                 startActivity(intent);

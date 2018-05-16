@@ -46,12 +46,12 @@
                         android:id="@+id/result2Text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="result1" />
+                        android:text="" />
                     <TextView
                         android:id="@+id/result2Val"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="x%" />
+                        android:text="" />
 
                     </LinearLayout>
                     <LinearLayout
@@ -63,12 +63,12 @@
                             android:id="@+id/result3Text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="result1" />
+                            android:text="" />
                         <TextView
                             android:id="@+id/result3Val"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="x%" />
+                            android:text="" />
 
                         </LinearLayout>
                     </LinearLayout>
