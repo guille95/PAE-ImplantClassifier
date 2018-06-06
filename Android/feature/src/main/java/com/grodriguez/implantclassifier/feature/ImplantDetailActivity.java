@@ -21,15 +21,18 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
     TextView result1Value;
     TextView result2Value;
     TextView result3Value;
+    TextView implantName;
+    TextView implantDetails;
     String result1;
     String result2;
     String result3;
     Integer result1Val;
     Integer result2Val;
     Integer result3Val;
-    ImageButton linkbtn;
+    Button linkbtn;
     String url;
     ImageView image;
+    int result = 0; //bench 1 //nob 2 // coral 3
 
 
 
@@ -38,7 +41,7 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.implant_detail_layout);
 
-        linkbtn = (ImageButton) findViewById(R.id.implantWebBtn);
+        linkbtn = (Button) findViewById(R.id.implantWebBtn);
         linkbtn.setOnClickListener(this);
         image = (ImageView) findViewById(R.id.imageViewMedium);
 
@@ -48,6 +51,8 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         result1Value = (TextView) findViewById(R.id.result1Val);
         result2Value = (TextView) findViewById(R.id.result2Val);
         result3Value = (TextView) findViewById(R.id.result3Val);
+        implantName = (TextView) findViewById(R.id.implantName);
+        implantDetails = (TextView) findViewById(R.id.implantDetails);
 
 
         Intent intent = getIntent();/*
@@ -68,7 +73,14 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         result3Value.setText(result3Val);
 */
 
-        result1Text.setText(intent.getStringExtra("result1"));
+
+        result1Text.setText(getName(intent.getStringExtra("result1")));
+        if(intent.getStringExtra("result1").equals("branemarkmkiii"))
+            result = 1;
+        else if (intent.getStringExtra("result1").equals("nobelspeedygroovy"))
+            result = 2;
+        else
+            result = 3;
         Float f = intent.getFloatExtra("result1int",0)*100;
         result1Value.setText(f.toString()+"%");
         String r2 = intent.getStringExtra("result2");
@@ -76,11 +88,11 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         Float f2 = intent.getFloatExtra("result2int",0)*100;
         Float f3 = intent.getFloatExtra("result3int",0)*100;
         if(r2 != null){
-            result1Text.setText(r2);
+            result1Text.setText(getName(r2));
             result1Value.setText(f2.toString()+"%");
         }
         if(r3 != null){
-            result1Text.setText(r3);
+            result1Text.setText(getName(r3));
             result1Value.setText(f3.toString()+"%");
         }
 
@@ -88,9 +100,30 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         byte[] byteArray = getIntent().getByteArrayExtra("image");
         Bitmap imagebitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
         image.setImageBitmap(imagebitmap);
-
-        //
         url = "https://www.google.com";
+        //URL + DETAILS
+        if(result == 1){
+            //branemarkmkiii
+            url = "https://www.nobelbiocare.com/es/es/home/products-and-solutions/implant-systems/branemark-system.html";
+            implantName.setText("Branemark MK III");
+            implantDetails.setText("Details....");
+
+        }
+        else if(result == 2){
+            //nobelspeedygroovy
+         url = "https://www.nobelbiocare.com/es/es/home/products-and-solutions/implant-systems/nobelspeedy.html";
+            implantName.setText("Nobel Speedy Groovy");
+            implantDetails.setText("Details....");
+
+        }
+        else{
+            //avinentcoral
+            url = "https://implant-system.avinent.com/es/producto/sistema-coral";
+            implantName.setText("Avinent Coral");
+            implantDetails.setText("Details....");
+
+        }
+
 
     }
 
@@ -106,5 +139,15 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
             Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
             startActivity(launchBrowser);
 
+        }
+        private String getName(String s){
+            String name;
+            if(s.equals("branemarkmkiii"))
+                name = "Branemark MK III";
+            else if(s.equals("nobelspeedygroovy"))
+                name = "Nobel Speedy Groovy";
+            else
+                name = "Avinent Coral";
+             return name;
         }
 }

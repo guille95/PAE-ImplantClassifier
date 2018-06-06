@@ -6,33 +6,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginHorizontal="50dp"
         android:orientation="vertical"
         android:gravity="center">
 
         <ImageView
             android:id="@+id/imageViewBig"
-            android:layout_width="270dp"
-            android:layout_height="480dp"
+            android:layout_width="250dp"
+            android:layout_height="446dp"
+            android:layout_marginTop="23dp"
             app:srcCompat="@android:color/black" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginVertical="17dp"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/returnBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/btn_dialog" />
+                android:text="Return" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/searchBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                app:srcCompat="@android:drawable/ic_search_category_default" />
+                android:text="Search"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

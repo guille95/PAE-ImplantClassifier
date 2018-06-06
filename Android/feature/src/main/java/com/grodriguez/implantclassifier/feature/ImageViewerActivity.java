@@ -23,8 +23,8 @@ import java.util.List;
 
 public class ImageViewerActivity extends Activity implements View.OnClickListener {
 
-    private ImageButton cancel;
-    private ImageButton search;
+    private Button cancel;
+    private Button search;
     private Uri imageCaptureURI;
     private ImageView imageView;
     Boolean permis = false;
@@ -34,7 +34,7 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
     private static final int INPUT_SIZE = 224;
     private static final int IMAGE_MEAN = 128;
     private static final float IMAGE_STD = 128.0f;
-    private static final String INPUT_NAME = "input";
+    private static final String INPUT_NAME = "Mul:0";
     private static final String OUTPUT_NAME = "final_result";
 
     private static final String MODEL_FILE = "file:///android_asset/graph.pb";
@@ -44,9 +44,9 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.image_viewer_layout);
-        cancel = (ImageButton) findViewById(R.id.returnBtn);
+        cancel = (Button) findViewById(R.id.returnBtn);
         cancel.setOnClickListener(this);
-        search = (ImageButton) findViewById(R.id.searchBtn);
+        search = (Button) findViewById(R.id.searchBtn);
         search.setOnClickListener(this);
         imageView = (ImageView) findViewById(R.id.imageViewBig);
         int MyVersion = Build.VERSION.SDK_INT;

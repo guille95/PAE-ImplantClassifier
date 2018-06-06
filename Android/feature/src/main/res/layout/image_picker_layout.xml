@@ -44,7 +44,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="GALLERY"
-                android:background="@drawable/roundedbutton"
                 android:layout_marginHorizontal="15dp"/>
 
             <Button
@@ -53,7 +52,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="CAMERA"
-                android:background="@drawable/roundedbutton"
                 android:layout_marginHorizontal="15dp"/>
 
         </LinearLayout>
@@ -67,7 +65,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="SEND"
-                android:background="@drawable/roundedbutton"
                 android:layout_marginHorizontal="50dp"
                 android:layout_marginVertical="15dp"/>
 
