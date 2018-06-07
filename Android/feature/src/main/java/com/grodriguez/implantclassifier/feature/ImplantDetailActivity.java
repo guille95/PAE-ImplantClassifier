@@ -32,6 +32,7 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
     Button linkbtn;
     String url;
     ImageView image;
+    private String path;
     int result = 0; //bench 1 //nob 2 // coral 3
 
 
@@ -97,9 +98,14 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         }
 
 
-        byte[] byteArray = getIntent().getByteArrayExtra("image");
-        Bitmap imagebitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+//        byte[] byteArray = getIntent().getByteArrayExtra("image");
+//        Bitmap imagebitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+//        image.setImageBitmap(imagebitmap);
+
+        path = getIntent().getStringExtra("imagePath");
+        Bitmap imagebitmap = BitmapFactory.decodeFile(path);
         image.setImageBitmap(imagebitmap);
+
         url = "https://www.google.com";
         //URL + DETAILS
         if(result == 1){

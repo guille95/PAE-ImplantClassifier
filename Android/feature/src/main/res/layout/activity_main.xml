@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_margin="25dp">
 
 
     <LinearLayout
@@ -19,7 +20,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Username" />
+                android:text="Username"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/editText2"
@@ -28,7 +31,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="Name" />
+                android:hint="Name"/>
         </LinearLayout>
 
         <LinearLayout
@@ -41,7 +44,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Password" />
+                android:text="Password"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
 
             <EditText
                 android:id="@+id/editText"
@@ -49,7 +54,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ems="10"
-                android:inputType="textPassword" />
+                android:inputType="textPassword"
+                android:hint="********"/>
         </LinearLayout>
 
         <Button

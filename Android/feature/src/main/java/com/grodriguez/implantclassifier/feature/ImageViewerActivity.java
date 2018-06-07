@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ImageViewerActivity extends Activity implements View.OnClickListener {
@@ -30,6 +31,7 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
     Boolean permis = false;
     private Bitmap imagebitmap;
     private Classifier classifier;
+    private String path;
 
     private static final int INPUT_SIZE = 224;
     private static final int IMAGE_MEAN = 128;
@@ -71,9 +73,13 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
        // imagebitmap = (Bitmap) intent.getParcelableExtra("BitmapImage");
 
 
-        byte[] byteArray = getIntent().getByteArrayExtra("image");
-        imagebitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+//        byte[] byteArray = getIntent().getByteArrayExtra("image");
+//        imagebitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+//        imageView.setImageBitmap(imagebitmap);
+        path = getIntent().getStringExtra("imagePath");
+        imagebitmap = BitmapFactory.decodeFile(path);
         imageView.setImageBitmap(imagebitmap);
+
 
     }
 
@@ -105,6 +111,7 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
                 imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
                 intent.putExtra("image",byteArray);
+                intent.putExtra("imagePath",path);
 
                 if(result.size() >= 2){
                     intent.putExtra("result2",result.get(1).getTitle());
@@ -120,6 +127,11 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
 
                 intent.putExtra("result1",result.get(0).getTitle());
                 intent.putExtra("result1int",result.get(0).getConfidence());
+
+               // intent.putExtra("result1","aa");//FIXME
+                //intent.putExtra("result1int","bb");
+
+
                 startActivity(intent);
             }
             else
@@ -139,15 +151,19 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
 
     private List<Classifier.Recognition> sendImage() {
 
+        //mal
         //final List<Classifier.Recognition> results = classifier.recognizeImage(imagebitmap);
-
-
         //https://stackoverflow.com/questions/15759195/reduce-size-of-bitmap-to-some-specified-pixel-in-android
         //final List<Classifier.Recognition> results = classifier.recognizeImage2(getPixels(getResizedBitmap(imagebitmap,INPUT_SIZE,INPUT_SIZE)));
-        final List<Classifier.Recognition> results = classifier.recognizeImage(getResizedBitmap(imagebitmap,INPUT_SIZE,INPUT_SIZE));
 
 
 
+        //final List<Classifier.Recognition> results = new ArrayList<Classifier.Recognition>();//TODO
+        ///buena
+        final List<Classifier.Recognition> results = classifier.recognizeImage(getResizedBitmap(imagebitmap,INPUT_SIZE,INPUT_SIZE));//FIXME
+
+
+        //mal
         //final List<Classifier.Recognition> results = classifier.recognizeImage2(getPixels(imagebitmap));
 
 

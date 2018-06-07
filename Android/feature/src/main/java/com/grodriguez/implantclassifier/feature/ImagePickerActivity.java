@@ -37,6 +37,7 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
     Boolean permis = false;
     private Bitmap imagebitmap;
     private Classifier classifier;
+    private String path;
 
     private static final int INPUT_SIZE = 224;
     private static final int IMAGE_MEAN = 128;
@@ -118,7 +119,6 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
         if(resultCode != RESULT_OK)
             return;
         Bitmap bitmap  = null;
-        String path = "";
         if(requestCode == 2){
             imageCaptureURI = data.getData();
             path = getRealPathFromUri(imageCaptureURI);
@@ -159,24 +159,50 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
         }
         else if (v.getId() == R.id.sendButton) {
 
-            if(imagebitmap!=null) {
+//            if(imagebitmap!=null) {
+//                makeToast("Sent");
+//                //sendImage();
+//
+//               // esto peta, el bitmap es grande y no deja enviarlo via putExtra, mirar como hacerlo...
+//                //Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
+//               // intent.putExtra("BitmapImage", imagebitmap);
+//               // startActivity(intent);
+//                imagebitmap=getResizedBitmap(imagebitmap,480,270);
+//
+//                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                byte[] byteArray = stream.toByteArray();
+//
+//               // Intent in1 = new Intent(this, Activity2.class);
+//               // in1.putExtra("image",byteArray);
+//                Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
+//                intent.putExtra("image",byteArray);
+//                startActivity(intent);
+//
+//            }
+//            else
+//                makeToast("Please select an image");
+//        }
+
+            if(path!=null) {
                 makeToast("Sent");
                 //sendImage();
 
-               // esto peta, el bitmap es grande y no deja enviarlo via putExtra, mirar como hacerlo...
+                // esto peta, el bitmap es grande y no deja enviarlo via putExtra, mirar como hacerlo...
                 //Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
-               // intent.putExtra("BitmapImage", imagebitmap);
-               // startActivity(intent);
+                // intent.putExtra("BitmapImage", imagebitmap);
+                // startActivity(intent);
                 imagebitmap=getResizedBitmap(imagebitmap,480,270);
 
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
                 imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
                 byte[] byteArray = stream.toByteArray();
 
-               // Intent in1 = new Intent(this, Activity2.class);
-               // in1.putExtra("image",byteArray);
+                // Intent in1 = new Intent(this, Activity2.class);
+                // in1.putExtra("image",byteArray);
                 Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
                 intent.putExtra("image",byteArray);
+                intent.putExtra("imagePath",path);
                 startActivity(intent);
 
             }
