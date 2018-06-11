@@ -78,16 +78,16 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);            }
         }
 
-        classifier =
-                TensorFlowImageClassifier.create(
-                        getAssets(),
-                        MODEL_FILE,
-                        LABEL_FILE,
-                        INPUT_SIZE,
-                        IMAGE_MEAN,
-                        IMAGE_STD,
-                        INPUT_NAME,
-                        OUTPUT_NAME);
+//        classifier =
+//                TensorFlowImageClassifier.create(
+//                        getAssets(),
+//                        MODEL_FILE,
+//                        LABEL_FILE,
+//                        INPUT_SIZE,
+//                        IMAGE_MEAN,
+//                        IMAGE_STD,
+//                        INPUT_NAME,
+//                        OUTPUT_NAME);
 
     }
 
@@ -129,8 +129,10 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
                 bitmap = BitmapFactory.decodeFile(path);
         }
         else{
-            path = imageCaptureURI.getPath();
-            bitmap = BitmapFactory.decodeFile(path);
+            if(imageCaptureURI!= null) {
+                path = imageCaptureURI.getPath();
+                bitmap = BitmapFactory.decodeFile(path);
+            }
 
         }
         imagebitmap = bitmap;
@@ -185,23 +187,25 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
 //        }
 
             if(path!=null) {
-                makeToast("Sent");
+                //makeToast("Sent");
+
+
                 //sendImage();
 
                 // esto peta, el bitmap es grande y no deja enviarlo via putExtra, mirar como hacerlo...
                 //Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
                 // intent.putExtra("BitmapImage", imagebitmap);
                 // startActivity(intent);
-                imagebitmap=getResizedBitmap(imagebitmap,480,270);
+               // imagebitmap=getResizedBitmap(imagebitmap,480,270);
 
-                ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-                byte[] byteArray = stream.toByteArray();
+                //ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                //imagebitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+               // byte[] byteArray = stream.toByteArray();
 
                 // Intent in1 = new Intent(this, Activity2.class);
                 // in1.putExtra("image",byteArray);
                 Intent intent = new Intent(ImagePickerActivity.this, ImageViewerActivity.class);
-                intent.putExtra("image",byteArray);
+                //intent.putExtra("image",byteArray);
                 intent.putExtra("imagePath",path);
                 startActivity(intent);
 
@@ -249,7 +253,7 @@ public class ImagePickerActivity extends Activity implements View.OnClickListene
         //final List<Classifier.Recognition> results = classifier.recognizeImage2(getPixels(imagebitmap));
 
 
-        makeToast(results.toString());
+       // makeToast(results.toString());
 
 
     }

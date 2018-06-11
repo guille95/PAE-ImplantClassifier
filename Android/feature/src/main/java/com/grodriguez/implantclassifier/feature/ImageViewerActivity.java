@@ -36,7 +36,9 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
     private static final int INPUT_SIZE = 224;
     private static final int IMAGE_MEAN = 128;
     private static final float IMAGE_STD = 128.0f;
-    private static final String INPUT_NAME = "Mul:0";
+    //private static final String INPUT_NAME = "Mul:0";
+    private static final String INPUT_NAME = "input";
+
     private static final String OUTPUT_NAME = "final_result";
 
     private static final String MODEL_FILE = "file:///android_asset/graph.pb";
@@ -101,7 +103,8 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
                 makeToast("Sent");
                 List<Classifier.Recognition> result = sendImage();
                 Integer i = result.size();
-                makeToast(i.toString());
+                //makeToast(i.toString());
+
                 Intent intent = new Intent(ImageViewerActivity.this, ImplantDetailActivity.class);
 
 
@@ -167,7 +170,7 @@ public class ImageViewerActivity extends Activity implements View.OnClickListene
         //final List<Classifier.Recognition> results = classifier.recognizeImage2(getPixels(imagebitmap));
 
 
-        makeToast(results.toString());
+        //makeToast(results.toString());
 
         return results;
 

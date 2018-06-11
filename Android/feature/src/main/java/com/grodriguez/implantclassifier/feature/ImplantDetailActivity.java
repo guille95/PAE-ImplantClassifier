@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ImplantDetailActivity extends Activity implements View.OnClickListener {
 
@@ -76,6 +77,7 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
 
 
         result1Text.setText(getName(intent.getStringExtra("result1")));
+        makeToast(getName(intent.getStringExtra("result1")));
         if(intent.getStringExtra("result1").equals("branemarkmkiii"))
             result = 1;
         else if (intent.getStringExtra("result1").equals("nobelspeedygroovy"))
@@ -83,18 +85,19 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         else
             result = 3;
         Float f = intent.getFloatExtra("result1int",0)*100;
-        result1Value.setText(f.toString()+"%");
+        result1Value.setText(String.format("%.2f", f)+"%");
         String r2 = intent.getStringExtra("result2");
         String r3 = intent.getStringExtra("result3");
         Float f2 = intent.getFloatExtra("result2int",0)*100;
         Float f3 = intent.getFloatExtra("result3int",0)*100;
         if(r2 != null){
-            result1Text.setText(getName(r2));
-            result1Value.setText(f2.toString()+"%");
+            result2Text.setText(getName(r2));
+//            result2Value.setText(f2.toString()+"%");
+            result2Value.setText(String.format("%.2f", f2)+"%");
         }
         if(r3 != null){
-            result1Text.setText(getName(r3));
-            result1Value.setText(f3.toString()+"%");
+            result3Text.setText(getName(r3));
+            result3Value.setText(String.format("%.2f", f3)+"%");
         }
 
 
@@ -156,4 +159,12 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
                 name = "Avinent Coral";
              return name;
         }
+
+    private void makeToast(String s){
+        Toast toast1 =
+                Toast.makeText(getApplicationContext(),
+                        s, Toast.LENGTH_SHORT);
+
+        toast1.show();
+    }
 }
