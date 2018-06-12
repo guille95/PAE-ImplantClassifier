@@ -114,22 +114,22 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         if(result == 1){
             //branemarkmkiii
             url = "https://www.nobelbiocare.com/es/es/home/products-and-solutions/implant-systems/branemark-system.html";
-            implantName.setText("Branemark MK III");
-            implantDetails.setText("Details....");
+            implantName.setText("Brånemark MK III");
+            implantDetails.setText("Paredes paralelas y tres cámaras de corte. \nConexión hexagonal externa. Diseñado para lograr la óptima estabilidad del implante en todas las calidades óseas.");
 
         }
         else if(result == 2){
             //nobelspeedygroovy
          url = "https://www.nobelbiocare.com/es/es/home/products-and-solutions/implant-systems/nobelspeedy.html";
             implantName.setText("Nobel Speedy Groovy");
-            implantDetails.setText("Details....");
+            implantDetails.setText("Cuerpo ligeramente cónico. \nConexión hexagonal externa. \nEl ápice afilado permite una menor preparación y anclaje bicortical");
 
         }
         else{
             //avinentcoral
             url = "https://implant-system.avinent.com/es/producto/sistema-coral";
             implantName.setText("Avinent Coral");
-            implantDetails.setText("Details....");
+            implantDetails.setText("Tratamiento superficial hasta la plataforma."+"\n"+"Microespira cervical."+"\n"+"Fresados autorroscantes."+"\n"+"Espira continua de triple paso.");
 
         }
 
@@ -152,7 +152,7 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         private String getName(String s){
             String name;
             if(s.equals("branemarkmkiii"))
-                name = "Branemark MK III";
+                name = "Brånemark MK III";
             else if(s.equals("nobelspeedygroovy"))
                 name = "Nobel Speedy Groovy";
             else
