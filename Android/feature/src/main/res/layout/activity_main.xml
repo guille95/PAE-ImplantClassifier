@@ -20,7 +20,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Username"
+                android:text="Usuario"
                 android:textSize="17sp"
                 android:textStyle="bold"/>
 
@@ -31,7 +31,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:hint="Name"/>
+                android:hint="Nombre"/>
         </LinearLayout>
 
         <LinearLayout
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Password"
+                android:text="Contraseña"
                 android:textSize="17sp"
                 android:textStyle="bold"/>
 

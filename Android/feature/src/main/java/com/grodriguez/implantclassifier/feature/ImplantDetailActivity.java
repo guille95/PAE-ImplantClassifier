@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,12 +23,6 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
     TextView result3Value;
     TextView implantName;
     TextView implantDetails;
-    String result1;
-    String result2;
-    String result3;
-    Integer result1Val;
-    Integer result2Val;
-    Integer result3Val;
     Button linkbtn;
     String url;
     ImageView image;
@@ -57,24 +50,7 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         implantDetails = (TextView) findViewById(R.id.implantDetails);
 
 
-        Intent intent = getIntent();/*
-        result1 = (String) intent.getParcelableExtra("result1Text");
-        result2 = (String) intent.getParcelableExtra("result2Text");
-        result3 = (String) intent.getParcelableExtra("result3Text");
-        result1Val = (Integer) intent.getParcelableExtra("result1Val");
-        result2Val = (Integer) intent.getParcelableExtra("result2Val");
-        result3Val = (Integer) intent.getParcelableExtra("result3Val");
-*/
-
-        /*
-        result1Text.setText(result1);
-        result2Text.setText(result2);
-        result3Text.setText(result3);
-        result1Value.setText(result1Val);
-        result2Value.setText(result2Val);
-        result3Value.setText(result3Val);
-*/
-
+        Intent intent = getIntent();
 
         result1Text.setText(getName(intent.getStringExtra("result1")));
         makeToast(getName(intent.getStringExtra("result1")));
@@ -92,18 +68,12 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         Float f3 = intent.getFloatExtra("result3int",0)*100;
         if(r2 != null){
             result2Text.setText(getName(r2));
-//            result2Value.setText(f2.toString()+"%");
             result2Value.setText(String.format("%.2f", f2)+"%");
         }
         if(r3 != null){
             result3Text.setText(getName(r3));
             result3Value.setText(String.format("%.2f", f3)+"%");
         }
-
-
-//        byte[] byteArray = getIntent().getByteArrayExtra("image");
-//        Bitmap imagebitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
-//        image.setImageBitmap(imagebitmap);
 
         path = getIntent().getStringExtra("imagePath");
         Bitmap imagebitmap = BitmapFactory.decodeFile(path);
@@ -130,25 +100,17 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
             url = "https://implant-system.avinent.com/es/producto/sistema-coral";
             implantName.setText("Avinent Coral");
             implantDetails.setText("Tratamiento superficial hasta la plataforma."+"\n"+"Microespira cervical."+"\n"+"Fresados autorroscantes."+"\n"+"Espira continua de triple paso.");
-
         }
-
-
-    }
+   }
 
 
         @Override
         public void onClick(View v) {
-            /*Intent intent = new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
-            intent.addCategory(Intent.CATEGORY_BROWSABLE);
-            intent.setData(Uri.parse(url));
-            startActivity(intent);*/
             Uri uriUrl = Uri.parse(url);
             Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
             startActivity(launchBrowser);
-
         }
+
         private String getName(String s){
             String name;
             if(s.equals("branemarkmkiii"))
@@ -164,7 +126,6 @@ public class ImplantDetailActivity extends Activity implements View.OnClickListe
         Toast toast1 =
                 Toast.makeText(getApplicationContext(),
                         s, Toast.LENGTH_SHORT);
-
         toast1.show();
     }
 }

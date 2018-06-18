@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.grodriguez.implantclassifier.app"
-        minSdkVersion 22
+        minSdkVersion 23
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -28,5 +28,4 @@ dependencies {
     implementation project(':feature')
     implementation project(':base')
     compile 'org.tensorflow:tensorflow-android:+'
-   // implementation files('libs/libandroid_tensorflow_inference_java.jar')
 }

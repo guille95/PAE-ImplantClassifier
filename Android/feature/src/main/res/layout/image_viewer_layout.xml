@@ -28,14 +28,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="Return" />
+                android:text="Volver" />
 
             <Button
                 android:id="@+id/searchBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="Search"/>
+                android:text="Buscar"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
